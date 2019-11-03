@@ -3,7 +3,7 @@ const figlet = require('figlet')
 const fs = require('fs')
 
 const { askComponentName, askFilesInclude, askTargetDir } = require('./lib/inquirer')
-const { writeJSFile } = require('./lib/files')
+const { writeDefaultsFile, writeJSFile, writeSassFile } = require('./lib/files')
 const { transformComponentName } = require('./lib/utils')
 
 clear()
@@ -16,13 +16,13 @@ const run = async () => {
      * GET USER INPUT
      */
     // get directory that component will be created in
-    const directory = await askTargetDir()
+    const { targetDir } = await askTargetDir()
     // get name of the new component & transform into machine readalbe string
     const component = await askComponentName()
     const componentName = transformComponentName(component.componentName)
 
     // create new directory based on targetDir and componentName
-    await fs.mkdir(`${directory.targetDir}/${componentName}`, err => {
+    await fs.mkdir(`${targetDir}/${componentName}`, err => {
         if (err) console.error(err)
     })
 
@@ -34,7 +34,14 @@ const run = async () => {
      */
     // create js file
     if (files.filesInclude.indexOf('js') >= 0) {
-        writeJSFile(componentName, `${directory.targetDir}/${componentName}`)
+        writeJSFile(componentName, `${targetDir}/${componentName}`)
+    }
+    // create sass file
+    if (files.filesInclude.indexOf('sass') >= 0) {
+        writeSassFile(componentName, `${targetDir}/${componentName}`)
+    }
+    if (files.filesInclude.indexOf('defaults') >= 0) {
+        writeDefaultsFile(componentName, `${targetDir}/${componentName}`)
     }
 }
 
