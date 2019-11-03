@@ -1,0 +1,16 @@
+| src/
+|-- library.scss
+|-- library.js
+|-- library/
+|---- 01-atoms/
+|------ index.js
+|---- 02-molecules/
+|------ index.js
+|---- 03-organisms/
+|------ index.js
+
+line 2:
+library.scss includes imports of all component styles
+
+line 3:
+library.js includes import & export of all components, acts as an index file

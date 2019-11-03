@@ -4,7 +4,7 @@
   "description": "cli tool for generating react components with the loris component architecture",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "new": "node generate-component.js"
   },
   "keywords": [
     "node",
