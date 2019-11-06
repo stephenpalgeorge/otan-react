@@ -1,6 +1,9 @@
 const clear = require('clear')
 const figlet = require('figlet')
 const fs = require('fs')
+const util = require('util')
+
+const mkdir = util.promisify(fs.mkdir)
 
 const { askComponentName, askFilesInclude, askTargetDir } = require('./lib/generate-component/inquirer')
 const { writeDefaultsFile, writeJSFile, writeSassFile } = require('./lib/generate-component/files')
@@ -22,9 +25,12 @@ const run = async () => {
     const componentName = transformComponentName(component.componentName)
 
     // create new directory based on targetDir and componentName
-    await fs.mkdir(`${targetDir}/${componentName}`, err => {
-        if (err) console.error(err)
-    })
+    try {
+        mkdir(`${targetDir}/${componentName}`)
+    }
+    catch (err) {
+        console.error(err)
+    }
 
     // get array of files to be included in the directory
     const files = await askFilesInclude()
@@ -34,14 +40,11 @@ const run = async () => {
      */
     // create js file
     if (files.filesInclude.indexOf('js') >= 0) {
-        writeJSFile(componentName, `${targetDir}/${componentName}`)
+        await writeJSFile(componentName, `${targetDir}/${componentName}`)
     }
     // create sass file
     if (files.filesInclude.indexOf('sass') >= 0) {
-        writeSassFile(componentName, `${targetDir}/${componentName}`)
-    }
-    if (files.filesInclude.indexOf('defaults') >= 0) {
-        writeDefaultsFile(componentName, `${targetDir}/${componentName}`)
+        await writeSassFile(componentName, `${targetDir}/${componentName}`)
     }
 }
 

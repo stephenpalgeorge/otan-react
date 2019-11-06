@@ -1,0 +1,3 @@
+[ ] - write component.test.js file
+[ ] - consume package.json and install necessary packages (e.g. @testing-library/react)
+[ ] - introduce checks for if dir already exists
