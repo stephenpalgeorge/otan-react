@@ -6,8 +6,8 @@ const util = require('util')
 const mkdir = util.promisify(fs.mkdir)
 
 const { askComponentName, askFilesInclude, askTargetDir } = require('./lib/generate-component/inquirer')
-const { writeDefaultsFile, writeJSFile, writeSassFile } = require('./lib/generate-component/files')
-const { transformComponentName } = require('./lib/generate-component/utils')
+const { writeJSFile, writeSassFile, writeTestFile } = require('./lib/generate-component/files')
+const { transformJSXName, transformMachineName } = require('./lib/generate-component/utils')
 
 clear()
 console.log(figlet.textSync('Loris React', {
@@ -22,29 +22,34 @@ const run = async () => {
     const { targetDir } = await askTargetDir()
     // get name of the new component & transform into machine readalbe string
     const component = await askComponentName()
-    const componentName = transformComponentName(component.componentName)
+    const jsxName = transformJSXName(component.componentName)
+    const machineName = transformMachineName(component.componentName)
 
     // create new directory based on targetDir and componentName
     try {
-        mkdir(`${targetDir}/${componentName}`)
+        mkdir(`${targetDir}/${jsxName}`)
     }
     catch (err) {
         console.error(err)
     }
 
     // get array of files to be included in the directory
-    const files = await askFilesInclude()
+    const { filesInclude } = await askFilesInclude()
 
     /**
      * CREATE FILES
      */
     // create js file
-    if (files.filesInclude.indexOf('js') >= 0) {
-        await writeJSFile(componentName, `${targetDir}/${componentName}`)
+    if (filesInclude.indexOf('js') >= 0) {
+        await writeJSFile(jsxName, machineName, `${targetDir}/${jsxName}`)
     }
     // create sass file
-    if (files.filesInclude.indexOf('sass') >= 0) {
-        await writeSassFile(componentName, `${targetDir}/${componentName}`)
+    if (filesInclude.indexOf('sass') >= 0) {
+        await writeSassFile(machineName, `${targetDir}/${jsxName}`)
+    }
+    // create test file
+    if (filesInclude.indexOf('test') >= 0) {
+        await writeTestFile(jsxName, `${targetDir}/${jsxName}`)
     }
 }
 
