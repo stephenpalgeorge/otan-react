@@ -5,7 +5,7 @@ const util = require('util')
 
 const mkdir = util.promisify(fs.mkdir)
 
-const { askComponentName, askFilesInclude, askTargetDir } = require('./lib/generate-component/inquirer')
+const { askComponentName, askFilesInclude, askSubDir, askTargetDir } = require('./lib/generate-component/inquirer')
 const { writeJSFile, writeSassFile, writeTestFile } = require('./lib/generate-component/files')
 const { transformJSXName, transformMachineName } = require('./lib/generate-component/utils')
 
@@ -19,7 +19,11 @@ const run = async () => {
      * GET USER INPUT
      */
     // get directory that component will be created in
-    const { targetDir } = await askTargetDir()
+    const { targetDir } = await askTargetDir(process.cwd())
+    const { subdir } = await askSubDir(targetDir)
+    const destination = subdir.length > 0 ? `${targetDir}/${subdir}` : targetDir
+    console.log(destination)
+
     // get name of the new component & transform into machine readalbe string
     const component = await askComponentName()
     const jsxName = transformJSXName(component.componentName)
