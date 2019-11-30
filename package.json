@@ -1,38 +1,36 @@
 {
-  "name": "loris-react",
-  "version": "1.0.0",
-  "description": "cli tool for generating react components with the loris component architecture",
-  "main": "index.js",
+  "name": "loris-react",
+  "version": "1.0.0",
+  "description": "Tool for scaffolding react components and a react component library",
+  "main": "index.js",
   "module": "index.js",
-  "scripts": {
-    "new": "node lib/generate-component/index.js",
-    "setup": "node lib/setup-library/index.js"
-  },
-  "keywords": [
-    "node",
-    "cli",
-    "react",
-    "component",
-    "component-library",
-    "library",
-    "loris"
-  ],
-  "author": "stephen pal-george",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "clear": "^0.1.0",
-    "figlet": "^1.2.4",
-    "inquirer": "^7.0.0"
-  },
+  "directories": {
+    "lib": "lib"
+  },
   "files": [
-      "lib",
-      "index.js",
-      "README.md"
+    "lib",
+    "README.md",
+    "index.js"
   ],
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "figlet": "^1.2.4",
+    "inquirer": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "setup": "node lib/generate-component/index.js",
+    "new": "node lib/setup-library/index.js"
+  },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/stephenngeorge/loris-react"
-  }
+    "type": "git",
+    "url": "git+https://github.com/stephenngeorge/loris-react.git"
+  },
+  "author": "stephen pal-george",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenngeorge/loris-react/issues"
+  },
+  "homepage": "https://github.com/stephenngeorge/loris-react#readme"
 }
-    
