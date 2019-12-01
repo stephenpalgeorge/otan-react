@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "index.js",
   "bin": {
-    "loris-react": "./index.js"
+    "loris": "./index.js"
   },
   "directories": {
     "lib": "lib"
@@ -24,8 +24,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "setup": "node lib/generate-component/index.js",
-    "new": "node lib/setup-library/index.js"
+    "setup": "node lib/setup-library/exec.js",
+    "new": "node lib/generate-component/exec.js"
   },
   "repository": {
     "type": "git",
