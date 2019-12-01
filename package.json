@@ -4,6 +4,9 @@
   "description": "Tool for scaffolding react components and a react component library",
   "main": "index.js",
   "module": "index.js",
+  "bin": {
+    "loris-react": "./index.js"
+  },
   "directories": {
     "lib": "lib"
   },
