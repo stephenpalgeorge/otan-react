@@ -130,3 +130,82 @@ src/
 The files *library/01-atoms/index.js* && *library/index.js* will now include an import statement for Button and 
 an export object that includes Button. The file *library/library.scss* will now include an import statement for 
 01-atoms/Button/button.
+
+
+### Component Files
+When you generate a new component, Loris will ask you which files you want to include. You can choose any or all 
+of 'js', 'sass', 'data', 'test'. Some of these are more obvious than others, but here follows a brief explanation 
+of what each file does:
+
+#### JS - component javascript file
+This is the basic .js file that will create your react component. You can of course create more files in this 
+directory if you want to break your component out across two or three different files, but be aware that, by 
+deafult, Loris only imports this generated JS file, so if you do add your own you will either need to manually 
+import/export them in the directories index and the library index, or include them in this generated JS file.
+
+#### SASS - component styles
+This is where you would put any component-specific styles. *N.B. this file is not imported in the component 
+JS file but is included instead in the library/library.scss file.* We think this makes it easier to keep 
+track of the cascade as you will be include all component styles as one either before or (probably) after 
+any global styles you have written.
+
+#### DATA - props values
+Data files are a pattern that Loris encourages. They are basically a separate file for housing all of your 
+props values for a particular component. Then, when you consume the component, you can also import the component's
+data file and pass the object straight down. We think this helps with maintainability as well.
+
+*N.B. data files are probably not useful if you're making a component library that you intend to publish,
+since third-party consumers of your library won't have read and write access to this file.* Data files are 
+intended for a project where your components and their data are sharing a directory. If you are using a third 
+party component library, we still think data files is a pattern worth adopting.
+
+Here's a couple of examples:
+
+Suppose this component:
+```
+import React from 'react'
+import PropTypes from 'prop-types'
+
+const TextBlock = ({
+    heading,
+    body
+}) => {
+    return (
+        <div className="text-block">
+            <h2>{ heading }</h2>
+            <p>{ body }</p>
+        </div>
+    )
+}
+
+TextBlock.propTypes = {
+    heading: PropTypes.string,
+    body: PropTypes.string.isRequired
+}
+
+export default TextBlock
+```
+
+You can see we have defined two props, "heading" and "body". Now let's write our data file for this component:
+```
+const data = {
+    heading: "Loris React Component Library",
+    body: "Loris-react is designed to help you quickly scaffold and generate React component libraries."
+}
+
+export default data
+```
+
+Now, when you come to use the TextBlock component you can do this:
+```
+import React from 'react'
+
+import { TextBlock } from './library'
+import { TextBlockData } from './library/data'
+
+const HomePage = () => (
+    <div>
+        <TextBlock {...TextBlockData} />
+    </div>
+)
+```
