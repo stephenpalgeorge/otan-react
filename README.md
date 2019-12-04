@@ -57,6 +57,7 @@ src/
 |--|--|-- index.js
 |--|-- /03-organisms
 |--|--|-- index.js
+|--| data.js
 |--| index.js
 |--| library.scss
 ```
@@ -209,3 +210,45 @@ const HomePage = () => (
     </div>
 )
 ```
+
+It doesn't look like much at the moment, but imagine if TextBlock had a dozen props, and 3 of them were 
+long file paths to images/assets, and the "body" prop text was a couple of hundred words long! Keeping it 
+all together makes sense.
+But, you're probably going to want to use your components in more than just the once place, with more than 
+one set of data! There are probably a few ways that you could structure this code, but we reckon it makes 
+most sense just to nest some more objects inside of your data object. Like:
+```
+const data = {
+    homepage: {
+        heading: "Loris React Component Library",
+        body: "Loris-react is designed to help you quickly scaffold and generate React component libraries."
+    },
+    aboutpage: {
+        heading: "This is the about page",
+        body: "The data is different but we've stored it under an intuitively named property of our data object"
+    }
+}
+
+export default data
+```
+
+Now when you're consuming your data, something like this:
+```
+import React from 'react'
+
+import { TextBlock } from './library'
+import { TextBlockData } from './library/data'
+
+const HomePage = () => (
+    <div>
+        // now we specifically target the homepage 
+        // property of our data object
+        <TextBlock {...TextBlockData.homepage} />
+    </div>
+)
+```
+
+#### TEST
+If you've used create-react-app you'll have jest (and a test script) ready to go, so these files 
+should just work. Out of the box Loris just writes a simple test that checks your component will 
+successfully render to the DOM, obivously you should add many more of your own tests to this file!

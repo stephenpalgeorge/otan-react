@@ -1,3 +1,5 @@
 [x] - write component.test.js file
 [ ] - introduce checks for if dir already exists
+----- [ ] - if user runs 'setup' and there is already a library dir in the specified location
+----- [ ] - if component directory of chosen name already exists
 [ ] - library needs a data-file index
