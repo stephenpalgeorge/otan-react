@@ -46,8 +46,8 @@ switch(args[0]) {
     case "new":
       generateComponent()
       break
-    case "-v":
-    case "--version":
+    case "v":
+    case "version":
       console.log(chalk.yellow(`version: ${pkg.version}`))
     default:
       showIntro()
