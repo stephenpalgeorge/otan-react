@@ -4,6 +4,8 @@ const chalk = require('chalk')
 const figlet = require('figlet')
 const clear = require('clear')
 
+const pkg = require('./package.json')
+
 const generateComponent = require('./lib/generate-component')
 const setupLibrary = require('./lib/setup-library')
 
@@ -12,6 +14,13 @@ const showIntro = () => {
     console.log(figlet.textSync('Loris React', {
         horizontalLayout: "default"
     }))
+
+    console.log(`
+      ${chalk.bgYellow(`
+    version: ${pkg.version}`)}
+      ${chalk.yellow(`
+    ${pkg.description}`)}
+    `)
 
     console.log(
         `
@@ -32,13 +41,16 @@ let args = process.argv.splice(2)
 
 switch(args[0]) {
     case "setup":
-        setupLibrary()
-        break
+      setupLibrary()
+      break
     case "new":
-        generateComponent()
-        break
+      generateComponent()
+      break
+    case "-v":
+    case "--version":
+      console.log(chalk.yellow(`version: ${pkg.version}`))
     default:
-        showIntro()
+      showIntro()
 }
 
 module.exports = {
