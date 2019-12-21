@@ -55,5 +55,7 @@ switch(args[0]) {
 }
 
 module.exports = {
-    setupLibrary, generateComponent
+  generateComponent,
+  setupLibrary,
+  showIntro
 }
