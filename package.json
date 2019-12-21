@@ -1,6 +1,6 @@
 {
   "name": "loris-react",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "A tool for scaffolding react components and component libraries",
   "main": "index.js",
   "module": "index.js",
