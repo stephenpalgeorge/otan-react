@@ -44,6 +44,20 @@ directory where you want to your component library to be generated. Loris will c
 with you before it does anything, so just say no and cd into the right place before running 
 the command again if you need to.
 
+You can also run the command with a "name" argument. This will be useful if you want to create more
+than one library in a project, or if you are introducing loris-react to a project that already has a
+"library" directory. You can run the command like this (where "portfolio" is an example of a library
+name, you can call yours whatever you want):
+```
+loris-react setup --name portfolio
+```
+or like this:
+```
+loris-react setup -n portfolio
+```
+If you don't provide a name, it will default to "library". All follownig example code assumes the 
+default name.
+
 Next, you can choose which directories you want to be included in your library. Let's assume you 
 have a src directory where all your application code is stored, you run `loris-react setup` and 
 accept all the defaults, loris will scaffold the following file structure for you:
@@ -247,6 +261,11 @@ const HomePage = () => (
     </div>
 )
 ```
+
+#### VERSION
+Check what version of loris-react you have installed by running `loris-react --version` or 
+`loris-react -v`. To see a list of commands in the command line, just run `loris-react` with
+no arguments.
 
 #### TEST
 If you've used create-react-app you'll have jest (and a test script) ready to go, so these files 

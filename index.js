@@ -8,6 +8,7 @@ const pkg = require('./package.json')
 
 const generateComponent = require('./lib/generate-component')
 const setupLibrary = require('./lib/setup-library')
+const { hasArg } = require('./lib/utils')
 
 const showIntro = () => {
     clear()
@@ -29,7 +30,8 @@ const showIntro = () => {
     at https://github.com/stephenngeorge/loris-react#README.md
 
     ${chalk.green('loris-react setup')}: generates a new component library 
-    file structure in the directory you run the command from
+    file structure in the directory you run the command from, you can pass 
+    a name for your library with --name someName.
 
     ${chalk.green('loris-react new')}: generates a new a functional react
     component and handles all the import/export statements for you
@@ -41,7 +43,9 @@ let args = process.argv.splice(2)
 
 switch(args[0]) {
     case "setup":
-      setupLibrary()
+      let { index, value } = hasArg("name", args)
+      if (index >= 0) setupLibrary(value)
+      else setupLibrary()
       break
     case "new":
       generateComponent()
