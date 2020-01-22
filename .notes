@@ -1,7 +1,3 @@
-[x] - write component.test.js file
-[x] - introduce checks for if dir already exists
------ [x] - if user runs 'setup' and there is already a library dir in the specified location
------ [x] - if component directory of chosen name already exists
-[x] - library needs a data-file index
-
 [ ] - add script to delete component
+[ ] - add script to refresh indexes
+[ ] = delete filterForDirs, getShortPath, hasSubdir from generate-component dir once I've checked everywhere
