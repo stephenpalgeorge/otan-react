@@ -1,3 +1,4 @@
-[ ] - add script to delete component
+[ ] - add script to delete component // IN PROGRESS
 [ ] - add script to refresh indexes
-[x] = delete filterForDirs, getShortPath, hasSubdir from generate-component dir once I've checked everywhere
+[x] - delete filterForDirs, getShortPath, hasSubdir from generate-component dir once I've checked everywhere
+[ ] - add TypeScript support
