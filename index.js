@@ -8,6 +8,7 @@ const pkg = require('./package.json')
 
 const deleteComponent = require('./lib/delete-component')
 const generateComponent = require('./lib/generate-component')
+const rebuildLibrary = require('./lib/rebuild-library')
 const setupLibrary = require('./lib/setup-library')
 const { hasArg } = require('./lib/utils')
 
@@ -53,6 +54,9 @@ switch(args[0]) {
       break
     case "delete":
       deleteComponent()
+      break
+    case "rebuild":
+      rebuildLibrary()
       break
     case "-v":
     case "--version":
