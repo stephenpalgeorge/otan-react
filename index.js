@@ -14,7 +14,7 @@ const { hasArg } = require('./lib/utils')
 
 const showIntro = () => {
     clear()
-    console.log(figlet.textSync('Loris React', {
+    console.log(figlet.textSync('Orangutan', {
         horizontalLayout: "default"
     }))
 
@@ -27,16 +27,24 @@ const showIntro = () => {
 
     console.log(
         `
-    welcome to the loris-react CLI, here\'s a list 
+    welcome to the otan-react CLI, here\'s a list 
     of available commands or you can find more information
-    at https://github.com/stephenngeorge/loris-react#README.md
+    at https://github.com/stephenngeorge/otan-react#README.md
 
-    ${chalk.green('loris-react setup')}: generates a new component library 
+    ${chalk.green('otan-react setup')}: generates a new component library 
     file structure in the directory you run the command from, you can pass 
     a name for your library with --name someName.
 
-    ${chalk.green('loris-react new')}: generates a new a functional react
-    component and handles all the import/export statements for you
+    ${chalk.green('otan-react new')}: generates a new a functional react
+    component and handles all the import/export statements for you.
+
+    ${chalk.green('otan-react delete')}: deletes a component of your choosing
+    and updates all of the import/export statements accordingly.
+
+    ${chalk.green('otan-react rebuild')}: reads the library directory structure
+    and reconstructs all of the import/export statements. This is useful if you've
+    renamed a component and don't want to have to update all this manually, or if an
+    export/import has been accidentally lost somewhere in the chain.
         `
     )
 }

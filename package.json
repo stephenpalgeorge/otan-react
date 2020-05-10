@@ -1,11 +1,11 @@
 {
-  "name": "loris-react",
-  "version": "2.4.0",
+  "name": "otan-react",
+  "version": "1.0.0",
   "description": "A tool for scaffolding react components and component libraries",
   "main": "index.js",
   "module": "index.js",
   "bin": {
-    "loris-react": "./index.js"
+    "otan-react": "./index.js"
   },
   "directories": {
     "lib": "lib"
@@ -27,16 +27,17 @@
     "setup": "node lib/setup-library/exec.js",
     "new": "node lib/generate-component/exec.js",
     "delete": "node lib/delete-component/exec.js",
-    "rebuild": "node lib/rebuild-library/exec.js"
+    "rebuild": "node lib/rebuild-library/exec.js",
+    "info": "node index"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stephenngeorge/loris-react.git"
+    "url": "https://github.com/stephenpalgeorge/otan-react.git"
   },
   "author": "stephen pal-george",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stephenngeorge/loris-react/issues"
+    "url": "https://github.com/stephenpalgeorge/otan-react.git/issues"
   },
-  "homepage": "https://github.com/stephenngeorge/loris-react#readme"
+  "homepage": "https://github.com/stephenpalgeorge/otan-react.git#readme"
 }
