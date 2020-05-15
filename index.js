@@ -10,7 +10,7 @@ const deleteComponent = require('./lib/delete-component')
 const generateComponent = require('./lib/generate-component')
 const rebuildLibrary = require('./lib/rebuild-library')
 const setupLibrary = require('./lib/setup-library')
-const { hasArg } = require('./lib/utils')
+const { hasArg } = require('./lib/common-utils')
 
 const showIntro = () => {
     clear()
