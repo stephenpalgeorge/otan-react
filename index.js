@@ -10,7 +10,7 @@ const deleteComponent = require('./lib/delete-component')
 const generateComponent = require('./lib/generate-component')
 const rebuildLibrary = require('./lib/rebuild-library')
 const setupLibrary = require('./lib/setup-library')
-const { hasArg } = require('./lib/common-utils')
+const { useConfig } = require('./lib/common-utils')
 
 const showIntro = () => {
     clear()
@@ -50,20 +50,16 @@ const showIntro = () => {
 }
 
 let args = process.argv.splice(2)
-
-let { index, value } = hasArg("name", args)
+const { name } = useConfig()
 switch(args[0]) {
   case "setup":
-      if (index >= 0) setupLibrary(value)
-      else setupLibrary()
+      setupLibrary(name)
       break
     case "new":
-      if (index >= 0) generateComponent(value)
-      else generateComponent()
+      generateComponent(name)
       break
     case "delete":
-      if (index >= 0) deleteComponent(value)
-      else deleteComponent()
+      deleteComponent(name)
       break
     case "rebuild":
       rebuildLibrary()
