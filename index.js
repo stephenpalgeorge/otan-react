@@ -51,17 +51,19 @@ const showIntro = () => {
 
 let args = process.argv.splice(2)
 
+let { index, value } = hasArg("name", args)
 switch(args[0]) {
-    case "setup":
-      let { index, value } = hasArg("name", args)
+  case "setup":
       if (index >= 0) setupLibrary(value)
       else setupLibrary()
       break
     case "new":
-      generateComponent()
+      if (index >= 0) generateComponent(value)
+      else generateComponent()
       break
     case "delete":
-      deleteComponent()
+      if (index >= 0) deleteComponent(value)
+      else deleteComponent()
       break
     case "rebuild":
       rebuildLibrary()
