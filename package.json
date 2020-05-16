@@ -28,6 +28,7 @@
     "new": "node lib/generate-component/exec.js",
     "delete": "node lib/delete-component/exec.js",
     "rebuild": "node lib/rebuild-library/exec.js",
+    "rename": "node lib/rename-component/exec.js",
     "info": "node index"
   },
   "repository": {
