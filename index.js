@@ -66,7 +66,7 @@ switch(args[0]) {
       rebuildLibrary()
       break
     case "rename":
-      renameComponent()
+      renameComponent(name)
       break
     case "-v":
     case "--version":
