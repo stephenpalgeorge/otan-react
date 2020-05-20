@@ -1,6 +1,6 @@
 {
   "name": "otan-react",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "description": "A tool for scaffolding react components and component libraries",
   "main": "index.js",
   "module": "index.js",
